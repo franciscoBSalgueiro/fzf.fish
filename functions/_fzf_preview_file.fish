@@ -20,7 +20,8 @@ function _fzf_preview_file --description "Print a preview for the given file bas
             eval "$fzf_preview_file_cmd '$file_path'"
         else
             if string match "image/*" "$mime"
-                viu -w 65 "$file_path"
+                # viu -w 65 "$file_path"
+                kitty +kitten icat --transfer-mode stream --silent --place 67x23@75x8 "$file_path"
             else
                 bat --style=numbers --color=always "$file_path"
             end
